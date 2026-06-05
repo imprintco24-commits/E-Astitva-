@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="E-Astitva – Turn your resume into a professional portfolio website. Premium, mobile-responsive designs starting at ₹99. Delivered in 24 hours.">
+<meta name="keywords" content="resume portfolio website, CA portfolio, professional website, resume to website, E-Astitva">
+<meta property="og:title" content="E-Astitva – Transform Your Resume Into a Professional Website">
+<meta property="og:description" content="Professional portfolio websites for CA students, freshers & professionals. Starting at ₹99.">
+<title>E-Astitva – Transform Your Resume Into a Professional Website</title>
+
+<style>
+/* ── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --bg:        #0a0a0f;
+  --bg2:       #111118;
+  --bg3:       #16161f;
+  --border:    rgba(255,255,255,.07);
+  --border2:   rgba(255,255,255,.12);
+  --text:      #e8e8f0;
+  --muted:     #7a7a96;
+  --accent:    #6c63ff;
+  --accent2:   #a78bfa;
+  --gold:      #f0b429;
+  --green:     #25d366;
+  --green2:    #1db954;
+  --radius:    14px;
+  --radius-sm: 8px;
+  --shadow:    0 20px 60px rgba(0,0,0,.5);
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --trans:     .3s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── RESET ───────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font:inherit}
+ul{list-style:none}
+
+/* ── GOOGLE FONTS ────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── GRAIN OVERLAY ───────────────────────────────────────────── */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity:.35;
+}
+
+/* ── SCROLLBAR ───────────────────────────────────────────────── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* ── UTILITIES ───────────────────────────────────────────────── */
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+.section{padding:96px 0}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:16px}
+.section-label::before{content:'';width:20px;height:1px;background:var(--accent2)}
+.section-title{font-family:var(--font-head);font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.18;margin-bottom:16px}
+.section-sub{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.75}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:50px;font-size:.9rem;font-weight:600;transition:var(--trans);white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 0 0 0 rgba(108,99,255,.4)}
+.btn-primary:hover{background:#5a52e0;box-shadow:0 0 0 8px rgba(108,99,255,.15);transform:translateY(-1px)}
+.btn-ghost{border:1px solid var(--border2);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:var(--accent2);color:var(--accent2);background:rgba(108,99,255,.06);transform:translateY(-1px)}
+.btn-wa{background:var(--green);color:#fff;box-shadow:0 0 0 0 rgba(37,211,102,.35)}
+.btn-wa:hover{background:var(--green2);box-shadow:0 0 0 8px rgba(37,211,102,.12);transform:translateY(-1px)}
+
+.tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:50px;font-size:.72rem;font-weight:600;letter-spacing:.04em}
+.tag-gold{background:rgba(240,180,41,.12);color:var(--gold);border:1px solid rgba(240,180,41,.25)}
+.tag-purple{background:rgba(108,99,255,.15);color:var(--accent2);border:1px solid rgba(108,99,255,.3)}
+
+/* ── REVEAL ANIMATION ────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ══════════════════════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════════════════════ */
+nav{
+  position:sticky;top:0;z-index:900;
+  background:rgba(10,10,15,.85);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1180px;margin:0 auto}
+.nav-logo{display:flex;flex-direction:column;line-height:1}
+.nav-logo-name{font-family:var(--font-head);font-size:1.25rem;font-weight:700;letter-spacing:-.01em;background:linear-gradient(135deg,#fff 0%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-logo-tag{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:.85rem;font-weight:500;color:var(--muted);transition:color var(--trans)}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{margin-left:8px}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:var(--trans)}
+.nav-mobile{display:none;flex-direction:column;gap:4px;padding:16px 24px 20px;border-top:1px solid var(--border)}
+.nav-mobile a{padding:10px 0;font-size:.95rem;color:var(--muted);border-bottom:1px solid var(--border);transition:color var(--trans)}
+.nav-mobile a:hover{color:var(--text)}
+.nav-mobile .btn{margin-top:12px;justify-content:center}
+
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  .nav-mobile.open{display:flex}
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════════════════════ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:120px 0 80px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(108,99,255,.18) 0%,transparent 70%),
+             radial-gradient(ellipse 50% 40% at 90% 80%,rgba(167,139,250,.08) 0%,transparent 60%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 0%,black 30%,transparent 100%);
+  opacity:.4;
+}
+.hero-inner{position:relative;z-index:1;max-width:800px;margin:0 auto;text-align:center;padding:0 24px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px 6px 8px;border-radius:50px;
+  background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.25);
+  font-size:.78rem;font-weight:500;color:var(--accent2);margin-bottom:32px;
+}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+.hero h1{
+  font-family:var(--font-head);
+  font-size:clamp(2.4rem,5.5vw,4.2rem);
+  font-weight:700;line-height:1.12;letter-spacing:-.02em;
+  background:linear-gradient(160deg,#fff 0%,var(--accent2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:20px;
+}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--muted);max-width:540px;margin:0 auto 40px;line-height:1.75}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:64px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:var(--font-head);font-size:2rem;font-weight:700;color:#fff}
+.hero-stat-label{font-size:.78rem;color:var(--muted);margin-top:2px;letter-spacing:.05em}
+
+/* ══════════════════════════════════════════════════════════════
+   WHY SECTION
+══════════════════════════════════════════════════════════════ */
+.why{background:var(--bg2)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px;align-items:stretch}
+.why-card{
+  border-radius:var(--radius);padding:40px;
+  border:1px solid var(--border);
+  background:var(--bg3);
+  position:relative;overflow:hidden;
+}
+.why-card::before{
+  content:'';position:absolute;inset:0;opacity:0;transition:opacity var(--trans);
+  background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(108,99,255,.06),transparent);
+}
+.why-card:hover::before{opacity:1}
+.why-card-label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.why-card-label-bad{color:#f87171}
+.why-card-label-good{color:#34d399}
+.why-icon{font-size:1.8rem;margin-bottom:20px}
+.why-card h3{font-family:var(--font-head);font-size:1.35rem;font-weight:700;margin-bottom:20px}
+.why-list{display:flex;flex-direction:column;gap:12px}
+.why-list li{display:flex;align-items:flex-start;gap:10px;font-size:.92rem;color:var(--muted)}
+.why-list li::before{content:'✕';color:#f87171;font-size:.8rem;margin-top:3px;flex-shrink:0}
+.why-list.good li::before{content:'✓';color:#34d399}
+.why-highlight{
+  grid-column:1/-1;
+  padding:28px 36px;
+  background:linear-gradient(135deg,rgba(108,99,255,.12),rgba(167,139,250,.06));
+  border-radius:var(--radius);border:1px solid rgba(108,99,255,.25);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.why-highlight p{font-size:1.05rem;color:var(--text);max-width:560px}
+.why-highlight strong{color:var(--accent2)}
+
+@media(max-width:640px){.why-grid{grid-template-columns:1fr}}
+
+/* ══════════════════════════════════════════════════════════════
+   PRICING
+══════════════════════════════════════════════════════════════ */
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+.pricing-card{
+  border-radius:var(--radius);padding:40px;
+  border:1px solid var(--border);background:var(--bg3);
+  position:relative;transition:transform var(--trans),border-color var(--trans);
+}
+.pricing-card:hover{transform:translateY(-4px)}
+.pricing-card.popular{
+  border-color:rgba(108,99,255,.5);
+  background:linear-gradient(160deg,rgba(108,99,255,.08) 0%,var(--bg3) 60%);
+}
+.popular-badge{
+  position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 16px;border-radius:0 0 10px 10px;
+}
+.pricing-name{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.pricing-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
+.pricing-price .amount{font-family:var(--font-head);font-size:3rem;font-weight:700;color:#fff}
+.pricing-price .currency{font-size:1.4rem;font-weight:600;color:var(--muted);align-self:flex-start;margin-top:10px}
+.pricing-note{font-size:.8rem;color:var(--muted);margin-bottom:28px}
+.pricing-divider{height:1px;background:var(--border);margin-bottom:28px}
+.pricing-features{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.pricing-feature{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--muted)}
+.pricing-feature::before{content:'✓';color:#34d399;font-size:.85rem;flex-shrink:0;font-weight:700}
+.pricing-cta{width:100%;padding:14px;border-radius:50px;font-size:.9rem;font-weight:600;transition:var(--trans);text-align:center;display:block}
+
+@media(max-width:640px){.pricing-grid{grid-template-columns:1fr}}
+
+/* ══════════════════════════════════════════════════════════════
+   SHOWCASE
+══════════════════════════════════════════════════════════════ */
+.showcase{background:var(--bg2)}
+.tabs{display:flex;gap:4px;background:var(--bg3);border:1px solid var(--border);padding:4px;border-radius:50px;width:fit-content;margin:0 auto 48px;margin-top:48px}
+.tab-btn{
+  padding:10px 24px;border-radius:50px;font-size:.85rem;font-weight:600;
+  color:var(--muted);transition:var(--trans);background:transparent;
+}
+.tab-btn.active{background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(108,99,255,.35)}
+.templates-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.template-card{
+  border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);
+  background:var(--bg3);transition:transform var(--trans),border-color var(--trans),box-shadow var(--trans);
+  cursor:pointer;
+}
+.template-card:hover{transform:translateY(-6px);border-color:rgba(108,99,255,.4);box-shadow:0 24px 48px rgba(0,0,0,.4)}
+.template-thumb{
+  height:200px;background:linear-gradient(135deg,var(--bg) 0%,var(--bg3) 100%);
+  position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--border);
+}
+.template-thumb-inner{text-align:center;color:var(--muted)}
+.template-thumb-inner .thumb-icon{font-size:2.5rem;margin-bottom:8px;opacity:.4}
+.template-thumb-inner .thumb-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.template-thumb::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(108,99,255,.07),transparent);
+}
+.template-body{padding:20px}
+.template-name{font-weight:600;font-size:.95rem;margin-bottom:6px;color:var(--text)}
+.template-desc{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.template-footer{display:flex;align-items:center;justify-content:space-between}
+.template-tag{font-size:.7rem;padding:4px 10px;border-radius:50px;background:rgba(108,99,255,.12);color:var(--accent2);border:1px solid rgba(108,99,255,.2);font-weight:500}
+.preview-btn{
+  display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;
+  color:var(--accent2);padding:7px 16px;border-radius:50px;border:1px solid rgba(108,99,255,.3);
+  background:rgba(108,99,255,.08);transition:var(--trans);
+}
+.preview-btn:hover{background:rgba(108,99,255,.2);border-color:var(--accent2)}
+.tab-panel{display:none}
+.tab-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+
+/* ══════════════════════════════════════════════════════════════
+   MODAL
+══════════════════════════════════════════════════════════════ */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.8);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.open{display:flex}
+.modal-box{
+  width:100%;max-width:1100px;height:90vh;
+  background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border2);
+  box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;
+  animation:modal-in .3s cubic-bezier(.4,0,.2,1) both;
+}
+@keyframes modal-in{from{opacity:0;transform:scale(.96) translateY(16px)}to{opacity:1;transform:none}}
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid var(--border);flex-shrink:0;
+}
+.modal-notice{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(240,180,41,.1);border:1px solid rgba(240,180,41,.25);
+  border-radius:6px;padding:7px 14px;font-size:.78rem;color:var(--gold);
+}
+.modal-close{
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--border2);
+  background:var(--bg3);color:var(--text);font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;transition:var(--trans);
+}
+.modal-close:hover{background:rgba(255,255,255,.08);border-color:var(--border2)}
+.modal-iframe{flex:1;width:100%;border:none;background:#fff}
+
+/* ══════════════════════════════════════════════════════════════
+   HOW IT WORKS
+══════════════════════════════════════════════════════════════ */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;position:relative}
+.steps::before{
+  content:'';position:absolute;top:40px;left:calc(16.6% + 24px);right:calc(16.6% + 24px);
+  height:1px;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:0;
+}
+.step{text-align:center;padding:0 24px;position:relative;z-index:1}
+.step-num{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-head);font-size:1.6rem;font-weight:700;color:#fff;
+  margin:0 auto 24px;box-shadow:0 8px 24px rgba(108,99,255,.35);
+}
+.step-title{font-weight:600;font-size:1.05rem;margin-bottom:8px}
+.step-desc{font-size:.88rem;color:var(--muted);line-height:1.7}
+
+@media(max-width:640px){
+  .steps{grid-template-columns:1fr;gap:40px}
+  .steps::before{display:none}
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════════════════════════ */
+.faq{background:var(--bg2)}
+.faq-list{max-width:720px;margin:56px auto 0;display:flex;flex-direction:column;gap:2px}
+.faq-item{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg3)}
+.faq-q{
+  width:100%;text-align:left;padding:20px 24px;font-size:.95rem;font-weight:500;
+  color:var(--text);display:flex;justify-content:space-between;align-items:center;gap:16px;
+  background:transparent;transition:color var(--trans);
+}
+.faq-q:hover{color:var(--accent2)}
+.faq-q .faq-icon{
+  width:28px;height:28px;border-radius:50%;background:var(--bg);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:.9rem;transition:transform var(--trans),background var(--trans);
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--accent);border-color:var(--accent)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:200px}
+.faq-a-inner{padding:0 24px 20px;font-size:.9rem;color:var(--muted);line-height:1.75;border-top:1px solid var(--border)}
+.faq-a-inner{padding-top:16px}
+
+/* ══════════════════════════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════════════════════════ */
+.contact-card{
+  max-width:640px;margin:0 auto;
+  background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);
+  padding:56px 48px;text-align:center;position:relative;overflow:hidden;
+  margin-top:48px;
+}
+.contact-card::before{
+  content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(108,99,255,.15),transparent 70%);
+  pointer-events:none;
+}
+.contact-email{font-family:var(--font-mono);font-size:.9rem;color:var(--muted);margin:16px 0 12px}
+.contact-phone{font-family:var(--font-mono);font-size:.9rem;color:var(--muted);margin-bottom:36px}
+.contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ══════════════════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════════════════ */
+footer{
+  border-top:1px solid var(--border);padding:40px 0;
+  background:var(--bg2);
+}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-brand{font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--text)}
+.footer-copy{font-size:.82rem;color:var(--muted)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.82rem;color:var(--muted);transition:color var(--trans)}
+.footer-links a:hover{color:var(--accent2)}
+
+/* ══════════════════════════════════════════════════════════════
+   FLOATING WA BUTTON
+══════════════════════════════════════════════════════════════ */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:9000;
+  width:58px;height:58px;border-radius:50%;
+  background:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+  transition:transform var(--trans),box-shadow var(--trans);
+}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 8px 30px rgba(37,211,102,.5)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.wa-pulse{
+  position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--green);
+  animation:wa-ring 2.5s ease-out infinite;
+}
+@keyframes wa-ring{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.6)}}
+
+@media(max-width:480px){
+  .wa-float{bottom:20px;right:20px;width:52px;height:52px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav id="top">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo" style="flex-direction:row;align-items:center;gap:10px">
+      <img src="data:image/png;base64,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" alt="E-Astitva Logo" style="height:40px;width:auto;object-fit:contain;filter:invert(1) brightness(2)">
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span class="nav-logo-name">E-Astitva</span>
+        <span class="nav-logo-tag">Portfolio Studio</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#why">Why</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#showcase">Templates</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20viewed%20your%20resume%20portfolio%20templates%20and%20would%20like%20to%20know%20more." target="_blank" class="btn btn-wa nav-cta" style="font-size:.82rem;padding:10px 20px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.554 4.099 1.523 5.819L0 24l6.335-1.502A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.773 9.773 0 01-4.988-1.365l-.358-.213-3.764.891.948-3.669-.233-.376A9.755 9.755 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/></svg>
+      Order Now
+    </a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#why" onclick="closeMenu()">Why Portfolio?</a>
+    <a href="#pricing" onclick="closeMenu()">Pricing</a>
+    <a href="#showcase" onclick="closeMenu()">Templates</a>
+    <a href="#how" onclick="closeMenu()">How It Works</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20viewed%20your%20resume%20portfolio%20templates%20and%20would%20like%20to%20know%20more." target="_blank" class="btn btn-wa">Order on WhatsApp</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge reveal">
+      <span class="hero-badge-dot"></span>
+      Delivered in 24 hours · Starting at ₹99
+    </div>
+    <h1 class="reveal reveal-delay-1">Transform Your Resume Into a Professional Website</h1>
+    <p class="hero-sub reveal reveal-delay-2">Stop sharing boring PDFs. Get a stunning, shareable portfolio website that makes recruiters remember your name — built in 24 hours, starting at ₹99.</p>
+    <div class="hero-ctas reveal reveal-delay-3">
+      <a href="#showcase" class="btn btn-ghost" onclick="switchTab('basic')">View Basic Templates</a>
+      <a href="#showcase" class="btn btn-ghost" onclick="switchTab('premium')">View Premium Templates</a>
+      <a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20viewed%20your%20resume%20portfolio%20templates%20and%20would%20like%20to%20know%20more." target="_blank" class="btn btn-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.554 4.099 1.523 5.819L0 24l6.335-1.502A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.773 9.773 0 01-4.988-1.365l-.358-.213-3.764.891.948-3.669-.233-.376A9.755 9.755 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/></svg>
+        Order on WhatsApp
+      </a>
+    </div>
+    <div class="hero-stats reveal reveal-delay-4">
+      <div class="hero-stat"><div class="hero-stat-num">15+</div><div class="hero-stat-label">Templates</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">24h</div><div class="hero-stat-label">Delivery</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">₹99</div><div class="hero-stat-label">Starting Price</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Mobile Ready</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ WHY ═══════════════════ -->
+<section class="why section" id="why">
+  <div class="container">
+    <div class="section-label reveal">Why It Matters</div>
+    <h2 class="section-title reveal">Your PDF résumé is holding you back</h2>
+    <p class="section-sub reveal">In a world where first impressions happen online, a static file doesn't cut it anymore.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-card-label why-card-label-bad">✕ Traditional PDF Resume</div>
+        <div class="why-icon">📄</div>
+        <h3>Static & Forgettable</h3>
+        <ul class="why-list">
+          <li>Static, impossible to update instantly</li>
+          <li>Limited visual presentation options</li>
+          <li>Easily lost in a recruiter's inbox</li>
+          <li>No way to showcase personality or brand</li>
+          <li>No analytics — you never know who opened it</li>
+        </ul>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-card-label why-card-label-good">✓ Resume Portfolio Website</div>
+        <div class="why-icon">🌐</div>
+        <h3>Dynamic & Memorable</h3>
+        <ul class="why-list good">
+          <li>One shareable link — works everywhere</li>
+          <li>Professional, polished appearance</li>
+          <li>100% mobile responsive on any device</li>
+          <li>Stronger personal brand & identity</li>
+          <li>Showcase projects, certificates & more</li>
+        </ul>
+      </div>
+      <div class="why-highlight reveal">
+        <p>Professionals with portfolio websites are <strong>2× more likely to get interview callbacks</strong> than those who share PDFs alone. Stand out before the first call.</p>
+        <a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20viewed%20your%20resume%20portfolio%20templates%20and%20would%20like%20to%20know%20more." target="_blank" class="btn btn-primary">Get Mine Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PRICING ═══════════════════ -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-label reveal">Pricing</div>
+    <h2 class="section-title reveal">Simple, honest pricing</h2>
+    <p class="section-sub reveal">No hidden fees. No subscriptions. One-time payment, yours forever.</p>
+    <div class="pricing-grid">
+
+      <!-- BASIC -->
+      <div class="pricing-card reveal">
+        <div class="pricing-name">Basic</div>
+        <div class="pricing-price"><span class="currency">₹</span><span class="amount">99</span></div>
+        <div class="pricing-note">One-time · Hosted link included</div>
+        <div class="tag tag-purple" style="margin-bottom:24px">Best for Students & Freshers</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature">Single-page portfolio</li>
+          <li class="pricing-feature">Education section</li>
+          <li class="pricing-feature">Skills section</li>
+          <li class="pricing-feature">Projects section</li>
+          <li class="pricing-feature">Mobile responsive</li>
+          <li class="pricing-feature">Hosted portfolio link included</li>
+        </ul>
+        <a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20would%20like%20to%20order%20the%20Basic%20portfolio%20website%20for%20%E2%82%B999." target="_blank" class="pricing-cta btn btn-ghost">Order Basic – ₹99</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="pricing-card popular reveal reveal-delay-2">
+        <div class="popular-badge">Most Popular</div>
+        <div class="pricing-name">Premium</div>
+        <div class="pricing-price"><span class="currency">₹</span><span class="amount">149</span></div>
+        <div class="pricing-note">One-time · Hosted link included</div>
+        <div class="tag tag-gold" style="margin-bottom:24px">✦ Best Value</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature">Everything in Basic</li>
+          <li class="pricing-feature">Premium UI & visual design</li>
+          <li class="pricing-feature">Interactive animated sections</li>
+          <li class="pricing-feature">Advanced layouts & components</li>
+          <li class="pricing-feature">Better visual presentation</li>
+          <li class="pricing-feature">Personalized branding & color</li>
+          <li class="pricing-feature">Hosted portfolio link included</li>
+        </ul>
+        <a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20would%20like%20to%20order%20the%20Premium%20portfolio%20website%20for%20%E2%82%B9149." target="_blank" class="pricing-cta btn btn-primary">Order Premium – ₹149</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SHOWCASE ═══════════════════ -->
+<section class="showcase section" id="showcase">
+  <div class="container">
+    <div class="section-label reveal">Templates</div>
+    <h2 class="section-title reveal">Browse our template library</h2>
+    <p class="section-sub reveal">Click Live Preview on any card to explore the full interactive template before ordering.</p>
+
+    <div class="tabs reveal">
+      <button class="tab-btn active" id="tab-basic" onclick="switchTab('basic')">Basic Templates (5)</button>
+      <button class="tab-btn" id="tab-premium" onclick="switchTab('premium')">Premium Templates (10)</button>
+    </div>
+
+    <div class="tab-panel active" id="panel-basic"></div>
+    <div class="tab-panel" id="panel-premium"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ HOW IT WORKS ═══════════════════ -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-label reveal" style="justify-content:center">Process</div>
+    <h2 class="section-title reveal" style="text-align:center;margin:0 auto 12px">How it works</h2>
+    <p class="section-sub reveal" style="text-align:center;margin:0 auto 0">Three steps. No technical knowledge needed.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-title">Choose a Template</div>
+        <p class="step-desc">Browse our Basic or Premium template library. Preview any design live before deciding.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">2</div>
+        <div class="step-title">Send Your Resume on WhatsApp</div>
+        <p class="step-desc">Share your resume PDF or Word file directly via WhatsApp. We handle the rest.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">3</div>
+        <div class="step-title">Receive Your Portfolio Website</div>
+        <p class="step-desc">Get your personalized, hosted portfolio link delivered within 24 hours. Share it anywhere.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px" class="reveal">
+      <a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20viewed%20your%20resume%20portfolio%20templates%20and%20would%20like%20to%20know%20more." target="_blank" class="btn btn-wa" style="font-size:1rem;padding:16px 36px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.554 4.099 1.523 5.819L0 24l6.335-1.502A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.773 9.773 0 01-4.988-1.365l-.358-.213-3.764.891.948-3.669-.233-.376A9.755 9.755 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/></svg>
+        Start on WhatsApp Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section class="faq section" id="faq">
+  <div class="container">
+    <div class="section-label reveal" style="justify-content:center">FAQ</div>
+    <h2 class="section-title reveal" style="text-align:center;margin:0 auto">Frequently asked questions</h2>
+    <div class="faq-list reveal" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-label reveal" style="justify-content:center">Contact</div>
+    <h2 class="section-title reveal" style="text-align:center;margin:0 auto">Have a question? Let's talk</h2>
+    <div class="contact-card reveal">
+      <p style="color:var(--muted);font-size:.95rem">Reach out anytime. I respond within a few hours.</p>
+      <div class="contact-email">dubey.shubham.work@gmail.com</div>
+      <div class="contact-phone">+91 89283 71744</div>
+      <div class="contact-btns">
+        <a href="mailto:dubey.shubham.work@gmail.com" class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          Email Me
+        </a>
+        <a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20viewed%20your%20resume%20portfolio%20templates%20and%20would%20like%20to%20know%20more." target="_blank" class="btn btn-wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.554 4.099 1.523 5.819L0 24l6.335-1.502A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.773 9.773 0 01-4.988-1.365l-.358-.213-3.764.891.948-3.669-.233-.376A9.755 9.755 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-brand">E-Astitva</span>
+      <span class="footer-copy">© 2025 E-Astitva. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="mailto:dubey.shubham.work@gmail.com">Email</a>
+        <a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20viewed%20your%20resume%20portfolio%20templates%20and%20would%20like%20to%20know%20more." target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════ MODAL ═══════════════════ -->
+<div class="modal-overlay" id="previewModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-notice">⚠ Demo Version – Contact and Download features are disabled.</div>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <iframe class="modal-iframe" id="previewFrame" src="" title="Template Preview" ></iframe>
+  </div>
+</div>
+
+<!-- ═══════════════════ FLOATING WA ═══════════════════ -->
+<a href="https://wa.me/918928371744?text=Hi%20Shubham,%20I%20viewed%20your%20resume%20portfolio%20templates%20and%20would%20like%20to%20know%20more." target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <span class="wa-pulse"></span>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.554 4.099 1.523 5.819L0 24l6.335-1.502A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.773 9.773 0 01-4.988-1.365l-.358-.213-3.764.891.948-3.669-.233-.376A9.755 9.755 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/></svg>
+</a>
+
+<script>
+/* ──────────────────────────────────────────────────────────
+   TEMPLATE DATA  ← Edit paths here when files are ready
+────────────────────────────────────────────────────────── */
+const basicTemplates = [
+  { name:"Executive Minimal",   desc:"Clean single-column layout with sharp typography. Ideal for corporate roles.",   path:"basic-1.html",  tag:"Minimal" },
+  { name:"Soft Professional",   desc:"Warm tones with card-based sections. Great for creative & semi-formal profiles.", path:"basic-2.html",  tag:"Warm" },
+  { name:"Corporate Dark",      desc:"Dark theme with bold accent colors. Professional and high-contrast.",              path:"basic-3.html",  tag:"Dark" },
+  { name:"Compact Pro",         desc:"Information-dense, two-column layout perfect for experienced profiles.",          path:"basic-4.html",  tag:"Compact" },
+  { name:"Apple Inspired",      desc:"Ultra-minimal white space design with Cupertino-style micro interactions.",       path:"basic-5.html",  tag:"Minimal" }
+];
+
+const premiumTemplates = [
+  { name:"Stripe Inspired",     desc:"SaaS-grade gradient design with animated sections and interactive hover states.",  path:"premium-1.html",  tag:"SaaS" },
+  { name:"NeoFinance",          desc:"Finance-forward dark dashboard with KPI cards and data-rich presentation.",        path:"premium-2.html",  tag:"Finance" },
+  { name:"Glass Morphism",      desc:"Frosted glass panels on deep gradient backgrounds. Futuristic & elegant.",         path:"premium-3.html",  tag:"Modern" },
+  { name:"Timeline Story",      desc:"Narrative-driven timeline layout. Tells your professional journey beautifully.",   path:"premium-4.html",  tag:"Story" },
+  { name:"Executive Dashboard", desc:"KPI-style dashboard with charts, stats, and a bold data-driven identity.",         path:"premium-5.html",  tag:"Dashboard" },
+  { name:"Swiss Typographic",   desc:"Editorial grid-based layout inspired by Swiss design principles.",                 path:"premium-6.html",  tag:"Editorial" },
+  { name:"Warm Luxury",         desc:"Gold-accented premium design with elegant serif typography.",                      path:"premium-7.html",  tag:"Luxury" },
+  { name:"Dark Tech",           desc:"Terminal-inspired developer aesthetic with code-block accents.",                   path:"premium-8.html",  tag:"Tech" },
+  { name:"Forest Minimal",      desc:"Earthy greens and natural tones for a calm, distinguished presence.",              path:"premium-9.html",  tag:"Nature" },
+  { name:"Premium Editorial",   desc:"Magazine-style layout with dramatic type and full-bleed sections.",                path:"premium-10.html", tag:"Editorial" }
+];
+
+/* ──────────────────────────────────────────────────────────
+   RENDER TEMPLATE CARDS
+────────────────────────────────────────────────────────── */
+function buildCard(tpl, tier) {
+  const icons = { Minimal:"◻", Warm:"◈", Dark:"◆", Compact:"▦", SaaS:"◉",
+                  Finance:"◎", Modern:"◑", Story:"◐", Dashboard:"◈", Editorial:"◷",
+                  Luxury:"◇", Tech:"◼", Nature:"◍" };
+  const icon = icons[tpl.tag] || "◎";
+  return `
+    <div class="template-card reveal" onclick="openPreview('${tpl.path}','${tpl.name}')">
+      <div class="template-thumb">
+        <div class="template-thumb-inner">
+          <div class="thumb-icon">${icon}</div>
+          <div class="thumb-label">${tpl.name}</div>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="template-name">${tpl.name}</div>
+        <div class="template-desc">${tpl.desc}</div>
+        <div class="template-footer">
+          <span class="template-tag">${tier === 'basic' ? '₹99' : '₹149'} · ${tpl.tag}</span>
+          <button class="preview-btn" onclick="event.stopPropagation();openPreview('${tpl.path}','${tpl.name}')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Live Preview
+          </button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderAllCards() {
+  document.getElementById('panel-basic').innerHTML   = basicTemplates.map(t => buildCard(t,'basic')).join('');
+  document.getElementById('panel-premium').innerHTML = premiumTemplates.map(t => buildCard(t,'premium')).join('');
+  observeReveal();
+}
+
+/* ──────────────────────────────────────────────────────────
+   TABS
+────────────────────────────────────────────────────────── */
+function switchTab(which) {
+  ['basic','premium'].forEach(t => {
+    document.getElementById('tab-'+t).classList.toggle('active', t===which);
+    document.getElementById('panel-'+t).classList.toggle('active', t===which);
+  });
+  // smooth scroll to showcase after hero links fire
+  setTimeout(() => document.getElementById('showcase').scrollIntoView({behavior:'smooth'}), 50);
+}
+
+/* ──────────────────────────────────────────────────────────
+   MODAL
+────────────────────────────────────────────────────────── */
+const modal  = document.getElementById('previewModal');
+const iframe = document.getElementById('previewFrame');
+let   activeBlobURL = null;
+
+/* Generates a realistic self-contained demo page for a template */
+function buildDemoHTML(name, tier, tag) {
+  const isPremium = tier === 'premium';
+  const accent  = isPremium ? '#6c63ff' : '#3b82f6';
+  const accent2 = isPremium ? '#a78bfa' : '#60a5fa';
+  const skills  = ['Financial Analysis','Internal Audit','IFRS/Ind AS','Excel Advanced','SAP ERP','Risk Assessment','GST Compliance','Data Analytics'];
+  const skillsHTML = skills.map(s =>
+    `<span style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:50px;background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.2);font-size:.78rem;color:${accent2};margin:4px">${s}</span>`
+  ).join('');
+  const projects = [
+    { t:'Internal Audit – Manufacturing Co.',  d:'Conducted risk-based audit across 6 departments. Identified 12 control gaps, saved ₹18L in process losses.' },
+    { t:'ICFR Testing – Listed NBFC',          d:'Performed 45+ test of controls under ICAI framework. Zero material weaknesses reported to management.' },
+    { t:'GST Reconciliation Tool',             d:'Built Excel-based automation for GSTR-2A vs books reconciliation, reducing manual effort by 70%.' }
+  ];
+  const projHTML = projects.map(p => `
+    <div style="padding:20px;border:1px solid rgba(255,255,255,.08);border-radius:10px;margin-bottom:12px;background:rgba(255,255,255,.02)">
+      <div style="font-weight:600;font-size:.95rem;margin-bottom:6px">${p.t}</div>
+      <div style="font-size:.85rem;color:#9ca3af;line-height:1.65">${p.d}</div>
+    </div>`).join('');
+
+  const premiumExtras = isPremium ? `
+    <section style="padding:48px 40px;border-top:1px solid rgba(255,255,255,.06)">
+      <div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:${accent2};margin-bottom:20px">Achievements</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        ${[['AIR 42','CA Final – Nov 2023'],['₹18L','Cost Savings Identified'],['45+','Controls Tested']].map(([n,l])=>`
+        <div style="text-align:center;padding:24px 16px;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(108,99,255,.05)">
+          <div style="font-size:1.8rem;font-weight:700;color:#fff;font-family:Georgia,serif">${n}</div>
+          <div style="font-size:.78rem;color:#9ca3af;margin-top:4px">${l}</div>
+        </div>`).join('')}
+      </div>
+    </section>` : '';
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${name} – Demo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0d0d14;color:#e2e2ee;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+  ::selection{background:${accent};color:#fff}
+  a{color:${accent2};text-decoration:none;pointer-events:none;opacity:.6;cursor:not-allowed}
+  button,input[type=submit]{pointer-events:none;opacity:.6;cursor:not-allowed}
+  form{pointer-events:none}
+  ::-webkit-scrollbar{width:3px}
+  ::-webkit-scrollbar-thumb{background:${accent};border-radius:2px}
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header style="background:linear-gradient(135deg,rgba(108,99,255,.18) 0%,rgba(167,139,250,.06) 100%);border-bottom:1px solid rgba(255,255,255,.07);padding:60px 40px 50px">
+  <div style="max-width:860px;margin:0 auto">
+    <div style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:${accent2};margin-bottom:12px">${name} · ${tier === 'premium' ? 'Premium' : 'Basic'} Template</div>
+    <h1 style="font-family:Georgia,serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;background:linear-gradient(135deg,#fff,${accent2});-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px">Aarav Mehta</h1>
+    <div style="font-size:1.05rem;color:#9ca3af;margin-bottom:24px">CA Intermediate · Internal Audit Specialist · Risk Advisory</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:50px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:.82rem;color:#9ca3af">📍 Mumbai, India</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:50px;background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.25);font-size:.82rem;color:${accent2}">✉ aarav.mehta@email.com</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:50px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:.82rem;color:#9ca3af">🔗 linkedin.com/in/asmehta</span>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section style="padding:48px 40px;max-width:860px;margin:0 auto">
+  <div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:${accent2};margin-bottom:16px">About</div>
+  <p style="font-size:1rem;color:#b4b4cc;line-height:1.8;max-width:680px">CA Intermediate qualified professional with 2+ years of experience in internal audit, ICFR/IFC testing, and risk advisory. Passionate about building controls frameworks that add measurable value to organizations. Currently seeking roles in Big 4 / mid-size audit firms.</p>
+</section>
+
+<!-- SKILLS -->
+<section style="padding:0 40px 48px;max-width:860px;margin:0 auto">
+  <div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:${accent2};margin-bottom:16px">Skills</div>
+  <div>${skillsHTML}</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section style="padding:48px 40px;border-top:1px solid rgba(255,255,255,.06);max-width:860px;margin:0 auto">
+  <div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:${accent2};margin-bottom:20px">Experience</div>
+  <div style="display:flex;gap:20px;margin-bottom:28px">
+    <div style="width:3px;background:linear-gradient(${accent},${accent2});border-radius:2px;flex-shrink:0"></div>
+    <div>
+      <div style="font-weight:600;font-size:1rem">Audit Associate – Deloitte India</div>
+      <div style="font-size:.82rem;color:${accent2};margin:4px 0 10px">Jun 2023 – Present · Mumbai</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:7px">
+        <li style="font-size:.88rem;color:#9ca3af;padding-left:14px;position:relative">• Led ICFR testing for a listed manufacturing company with ₹600Cr turnover</li>
+        <li style="font-size:.88rem;color:#9ca3af;padding-left:14px">• Reviewed 200+ journal entries for anomalies; flagged 3 high-risk exceptions</li>
+        <li style="font-size:.88rem;color:#9ca3af;padding-left:14px">• Prepared management reports for Board Audit Committee presentation</li>
+      </ul>
+    </div>
+  </div>
+  <div style="display:flex;gap:20px">
+    <div style="width:3px;background:rgba(255,255,255,.1);border-radius:2px;flex-shrink:0"></div>
+    <div>
+      <div style="font-weight:600;font-size:1rem">Articleship – KGSS & Associates</div>
+      <div style="font-size:.82rem;color:#9ca3af;margin:4px 0 10px">May 2021 – May 2023 · Pune</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:7px">
+        <li style="font-size:.88rem;color:#9ca3af;padding-left:14px">• Assisted in statutory audit of 8 SME clients across manufacturing & NBFC sectors</li>
+        <li style="font-size:.88rem;color:#9ca3af;padding-left:14px">• Performed GST reconciliation and assisted in ITR filing for corporate clients</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section style="padding:48px 40px;border-top:1px solid rgba(255,255,255,.06);max-width:860px;margin:0 auto">
+  <div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:${accent2};margin-bottom:20px">Key Projects</div>
+  ${projHTML}
+</section>
+
+<!-- EDUCATION -->
+<section style="padding:48px 40px;border-top:1px solid rgba(255,255,255,.06);max-width:860px;margin:0 auto">
+  <div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:${accent2};margin-bottom:20px">Education</div>
+  ${[['CA Intermediate (ICAI)','Both Groups Cleared · Nov 2022','ICAI'],['B.Com (Accounting & Finance)','University of Mumbai · 2021 · 78%','MU']].map(([t,s,i])=>`
+  <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:20px">
+    <div style="width:40px;height:40px;border-radius:8px;background:rgba(108,99,255,.15);border:1px solid rgba(108,99,255,.3);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:${accent2};flex-shrink:0">${i}</div>
+    <div><div style="font-weight:600;font-size:.95rem">${t}</div><div style="font-size:.82rem;color:#9ca3af;margin-top:3px">${s}</div></div>
+  </div>`).join('')}
+</section>
+
+${premiumExtras}
+
+<!-- FOOTER -->
+<footer style="padding:32px 40px;border-top:1px solid rgba(255,255,255,.06);text-align:center;background:rgba(0,0,0,.2)">
+  <div style="font-size:.8rem;color:#6b7280">This is a demo preview · Contact &amp; download actions are disabled</div>
+  <div style="font-size:.75rem;color:#4b5563;margin-top:4px">Built by E-Astitva · e-astitva.com</div>
+</footer>
+</body>
+</html>`;
+}
+
+/* Load a preview: try the real file first, fall back to blob demo */
+function openPreview(path, name) {
+  // Find template metadata
+  const all  = [...basicTemplates, ...premiumTemplates];
+  const tpl  = all.find(t => t.path === path) || { name, tag:'Minimal', path };
+  const tier = basicTemplates.find(t => t.path === path) ? 'basic' : 'premium';
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Revoke any previous blob URL
+  if (activeBlobURL) { URL.revokeObjectURL(activeBlobURL); activeBlobURL = null; }
+
+  // Try to fetch the real file first
+  fetch(path, { method: 'HEAD' })
+    .then(res => {
+      if (res.ok) {
+        // Real file exists — load it directly
+        iframe.src = path;
+        iframe.onload = () => injectSandboxScript();
+      } else {
+        throw new Error('not found');
+      }
+    })
+    .catch(() => {
+      // File not yet available — show blob demo
+      const html = buildDemoHTML(tpl.name, tier, tpl.tag);
+      const blob = new Blob([html], { type: 'text/html' });
+      activeBlobURL = URL.createObjectURL(blob);
+      iframe.src = activeBlobURL;
+      iframe.onload = null; // blob is already safe
+    });
+}
+
+/* Inject disable-script into real iframe files */
+function injectSandboxScript() {
+  try {
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    const fn = doc.createElement('script');
+    fn.textContent = `(function(){
+      function lock(){
+        document.querySelectorAll('a[href^="mailto:"],a[href^="tel:"],a[href*="wa.me"],a[download],a[href$=".pdf"]').forEach(function(el){
+          el.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();},true);
+          el.style.pointerEvents='none';el.style.opacity='.5';el.style.cursor='not-allowed';
+        });
+        document.querySelectorAll('form').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();},true);});
+        document.querySelectorAll('button').forEach(function(b){
+          if(/download|pdf|send|submit|contact|hire|email/.test((b.textContent||'').toLowerCase())){
+            b.disabled=true;b.style.opacity='.5';b.style.cursor='not-allowed';
+          }
+        });
+      }
+      lock();
+      new MutationObserver(lock).observe(document.body,{childList:true,subtree:true});
+    })();`;
+    doc.body.appendChild(fn);
+  } catch(e) {}
+}
+
+function closePreview() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    iframe.src = '';
+    if (activeBlobURL) { URL.revokeObjectURL(activeBlobURL); activeBlobURL = null; }
+  }, 300);
+}
+
+document.getElementById('modalClose').addEventListener('click', closePreview);
+modal.addEventListener('click', e => { if(e.target === modal) closePreview(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closePreview(); });
+
+/* ──────────────────────────────────────────────────────────
+   FAQ
+────────────────────────────────────────────────────────── */
+const faqs = [
+  { q:"How long does delivery take?",      a:"Usually within 24 hours of receiving your resume. We'll confirm via WhatsApp once your site is ready." },
+  { q:"Do I need any technical knowledge?",a:"No. Simply send your resume on WhatsApp, choose a template, and we handle everything — design, content, and hosting." },
+  { q:"Will I get a hosted link?",         a:"Yes! Every order includes a live, shareable hosted link. You can share it anywhere — LinkedIn, job applications, email signatures." },
+  { q:"Can I request content changes?",    a:"Yes. We allow one round of revision. Just let us know what to change and we'll update it promptly." },
+  { q:"Which template should I choose?",   a:"Basic is perfect for students and freshers. Premium is ideal for professionals wanting a distinctive, high-impact presence." }
+];
+
+function renderFAQ() {
+  const list = document.getElementById('faqList');
+  list.innerHTML = faqs.map((f,i) => `
+    <div class="faq-item" id="faq-${i}">
+      <button class="faq-q" onclick="toggleFAQ(${i})">
+        ${f.q}
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">${f.a}</div>
+      </div>
+    </div>`).join('');
+}
+
+function toggleFAQ(i) {
+  const item = document.getElementById('faq-'+i);
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+/* ──────────────────────────────────────────────────────────
+   SCROLL REVEAL
+────────────────────────────────────────────────────────── */
+function observeReveal() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+}
+
+/* ──────────────────────────────────────────────────────────
+   NAV HAMBURGER
+────────────────────────────────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const navMobile = document.getElementById('navMobile');
+hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+function closeMenu() { navMobile.classList.remove('open'); }
+
+/* ──────────────────────────────────────────────────────────
+   INIT
+────────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  renderAllCards();
+  renderFAQ();
+  observeReveal();
+});
+</script>
+</body>
+</html>
